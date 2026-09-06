@@ -3,13 +3,17 @@ include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hari = $_POST['hari'];
-    $jam = $_POST['jam'];
+    $jam = (int)$_POST['jam'];
     $kelas = $_POST['kelas'];
     $mata_pelajaran = $_POST['mata_pelajaran'];
 
-    $conn->query("INSERT INTO jadwal (hari, jam, kelas, mata_pelajaran) 
-                  VALUES ('$hari', '$jam', '$kelas', '$mata_pelajaran')");
+    $stmt = $conn->prepare("INSERT INTO jadwal (hari, jam, kelas, mata_pelajaran) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("siss", $hari, $jam, $kelas, $mata_pelajaran);
+    $stmt->execute();
+    $stmt->close();
+
     header("Location: index.php");
+    exit;
 }
 ?>
 
