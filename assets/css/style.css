@@ -1,0 +1,494 @@
+/* 
+ * File: style.css
+ * Deskripsi: File CSS utama untuk aplikasi Jadwal KBM
+ */
+
+/* Variabel warna tema */
+:root {
+    --primary-color: #007A33; /* Hijau Tua */
+    --secondary-color: #004F73; /* Biru Laut Tua */
+    --accent-color: #FFA200; /* Oranye */
+    --light-bg: #FFF4E5; /* Krem Lembut */
+    --white: #FFFFFF;
+    --light-gray: #f8f9fa;
+    --danger: #dc3545;
+    --danger-dark: #c82333;
+}
+
+/* Styling umum */
+body {
+    background-color: var(--light-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 0; /* Mengurangi padding dari 20px menjadi 10px */
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.8rem; /* Mengurangi ukuran font dari 2.5rem menjadi 1.8rem */
+    margin-bottom: 5px; /* Mengurangi margin dari 10px menjadi 5px */
+}
+
+.header p {
+    font-size: 1rem; /* Mengurangi ukuran font dari 1.2rem menjadi 1rem */
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar:hover {
+    box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white) !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.navbar-brand:hover {
+    transform: translateY(-2px);
+    color: #f8f9fa !important;
+}
+
+/* Styling untuk ikon brand */
+.navbar-brand i {
+    font-size: 1.5rem;
+    margin-right: 12px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover i {
+    transform: rotate(15deg) scale(1.1);
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255,215,0,0.5);
+}
+
+.navbar-nav {
+    gap: 0.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: 25px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.navbar-nav .nav-link:hover::before {
+    left: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--white) !important;
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.navbar-nav .nav-link.active {
+    background: rgba(255,255,255,0.2);
+    color: var(--white) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.dropdown-menu {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    color: rgba(255,255,255,0.9);
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    margin: 0.25rem;
+}
+
+.dropdown-item:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.15);
+    transform: translateX(5px);
+}
+
+/* Loading indicator untuk navigasi */
+.nav-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.nav-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border: 2px solid transparent;
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Animasi untuk ikon menu */
+.navbar-nav .nav-link i {
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover i {
+    transform: scale(1.2);
+}
+
+/* Efek glow untuk navbar saat scroll */
+.navbar.scrolled {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+}
+
+/* Animasi fade in untuk navbar items */
+.navbar-nav .nav-item {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 0.6s ease forwards;
+}
+
+.navbar-nav .nav-item:nth-child(1) { animation-delay: 0.1s; }
+.navbar-nav .nav-item:nth-child(2) { animation-delay: 0.2s; }
+.navbar-nav .nav-item:nth-child(3) { animation-delay: 0.3s; }
+.navbar-nav .nav-item:nth-child(4) { animation-delay: 0.4s; }
+.navbar-nav .nav-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive navbar */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: rgba(255,255,255,0.1);
+        border-radius: 15px;
+        margin-top: 1rem;
+        padding: 1rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 0.25rem 0;
+        text-align: center;
+        border-radius: 10px;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background: rgba(255,255,255,0.2);
+        transform: none;
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    
+    .navbar-brand i {
+        font-size: 1.3rem;
+    }
+}
+
+/* Form dan Container */
+.form-container {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+/* Tombol */
+.btn-primary, .btn-warning, .btn-danger, .btn-success, .btn-info, .btn-secondary {
+    border-radius: 20px;
+}
+
+.btn-success {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-success:hover {
+    background-color: #e67e22;
+    border-color: #e67e22;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: #00334d;
+    border-color: #00334d;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-dark);
+    border-color: #bd2130;
+}
+
+/* Tabel */
+table {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.no-class {
+    background-color: #000000;
+    color: var(--white);
+}
+
+/* Alert */
+.alert {
+    border-radius: 10px;
+}
+
+/* Format contoh */
+.format-example {
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.format-example pre {
+    margin-bottom: 0;
+}
+
+/* Baris jadwal */
+.jadwal-row {
+    background-color: var(--light-gray);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Checkbox column */
+.checkbox-column {
+    width: 40px;
+}
+
+/* Time block */
+.time-block {
+    font-weight: bold;
+    background-color: #e0f7fa;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* No schedule */
+.no-schedule {
+    background-color: var(--danger);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Filter container */
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.filter-container label {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Enhanced styles for kelas.php */
+.schedule-cell.empty-schedule {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border: 2px dashed #dee2e6;
+    opacity: 0.7;
+}
+
+.schedule-content {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.schedule-content:hover {
+    background: linear-gradient(45deg, #e3f2fd, #f3e5f5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.day-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.day-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .weekly-grid {
+        grid-template-columns: 100px repeat(6, 1fr);
+        font-size: 0.8em;
+    }
+    
+    .schedule-cell {
+        min-height: 60px;
+        padding: 8px;
+    }
+    
+    .time-header, .day-header {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    
+    .daily-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .toggle-btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .weekly-grid {
+        grid-template-columns: 80px repeat(3, 1fr);
+    }
+    
+    .schedule-grid {
+        gap: 5px;
+    }
+    
+    .view-toggle {
+        padding: 15px;
+    }
+}
+
+/* Loading animation */
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Pulse animation for empty cells */
+.schedule-cell.empty {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.6; }
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 0;
+}
