@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/wegqxcgv/subdomains/app.edumuslim.my.id/kbm/
-    - /bin/cp -R * $DEPLOYPATH
